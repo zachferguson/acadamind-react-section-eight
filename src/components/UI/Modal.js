@@ -1,10 +1,12 @@
 import "./Modal.css";
 
-const Modal = () => {
-  let closeAction = () => {};
+const Modal = (props) => {
+  let closeAction = (props) => {
+    document.getElementById("error-modal").style.display = "none";
+  };
   return (
-    <div className="modal">
-      <p>Please enter valid user information</p>
+    <div id="error-modal" className="modal">
+      <p id="modal-text"></p>
       <button onClick={closeAction}>Close</button>
     </div>
   );

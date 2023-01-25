@@ -6,7 +6,7 @@ const NewUser = (props) => {
   //   setEditedTitle(e.target.value);
   // };
   const [editedUserName, setEditedUserName] = useState("");
-  const [editedAge, setEditedAge] = useState(21);
+  const [editedAge, setEditedAge] = useState("");
   const userNameChangeHandler = (e) => {
     setEditedUserName(e.target.value);
   };
@@ -16,8 +16,21 @@ const NewUser = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (editedUserName === "" || editedAge <= 0) {
+    if (editedUserName === "") {
       console.log("invalid");
+      document.getElementById("error-modal").style.display = "block";
+      document.getElementById(
+        "modal-text"
+      ).innerText = `Please enter a valid name`;
+      return;
+    }
+    if (editedAge <= 0) {
+      console.log("invalid");
+      document.getElementById("error-modal").style.display = "block";
+      document.getElementById(
+        "modal-text"
+      ).innerText = `Please enter a valid age`;
+      return;
     }
     let newUser = {
       id: Math.random * 1000,
@@ -37,10 +50,12 @@ const NewUser = (props) => {
           onChange={userNameChangeHandler}
         ></input>
         <label>Age</label>
-        <input type="number"></input>
-        <button type="submit" value={editedAge} onChange={userAgeChangeHandler}>
-          Submit
-        </button>
+        <input
+          type="number"
+          value={editedAge}
+          onChange={userAgeChangeHandler}
+        ></input>
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
