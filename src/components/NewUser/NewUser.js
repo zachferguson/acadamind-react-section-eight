@@ -1,10 +1,9 @@
 import { useState } from "react";
-import "./NewUser.css";
+import Card from "../UI/Card";
+import Button from "../UI/Button";
+import classes from "./NewUser.module.css";
 
 const NewUser = (props) => {
-  // const titleChangeHandler = (e) => {
-  //   setEditedTitle(e.target.value);
-  // };
   const [editedUserName, setEditedUserName] = useState("");
   const [editedAge, setEditedAge] = useState("");
   const userNameChangeHandler = (e) => {
@@ -41,23 +40,27 @@ const NewUser = (props) => {
   };
 
   return (
-    <div>
-      <form onSubmit={submitHandler}>
-        <label>Name</label>
-        <input
-          type="text"
-          value={editedUserName}
-          onChange={userNameChangeHandler}
-        ></input>
-        <label>Age</label>
-        <input
-          type="number"
-          value={editedAge}
-          onChange={userAgeChangeHandler}
-        ></input>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <Card className={classes.input}>
+      <div className="new-user-wrapper">
+        <form onSubmit={submitHandler}>
+          <label htmlFor="username">Name</label>
+          <input
+            id="username"
+            type="text"
+            value={editedUserName}
+            onChange={userNameChangeHandler}
+          ></input>
+          <label htmlFor="userage">Age</label>
+          <input
+            id="userage"
+            type="number"
+            value={editedAge}
+            onChange={userAgeChangeHandler}
+          ></input>
+          <Button type="submit">Add User</Button>
+        </form>
+      </div>
+    </Card>
   );
 };
 

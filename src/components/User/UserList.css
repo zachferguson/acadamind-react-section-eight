@@ -1,0 +1,10 @@
+.user-list-wrapper {
+  border: 1px solid dimgrey;
+}
+.user-list-wrapper > ul {
+  display: flex;
+  flex-direction: column;
+}
+.user-list-wrapper > h2 {
+  text-align: center;
+}
