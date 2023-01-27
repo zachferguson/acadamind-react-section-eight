@@ -6,8 +6,12 @@ const Modal = (props) => {
   };
   return (
     <div id="error-modal" className="modal">
-      <p id="modal-text"></p>
-      <button onClick={closeAction}>Close</button>
+      <div id="error-modal_card">
+        <h2>An error has occurred.</h2>
+        <hr />
+        <p id="modal-text"></p>
+        <button onClick={closeAction}>Close</button>
+      </div>
     </div>
   );
 };

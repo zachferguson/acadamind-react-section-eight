@@ -13,22 +13,31 @@ const NewUser = (props) => {
     setEditedAge(e.target.value);
   };
 
+  let clearFields = () => {
+    //document.getElementById().value = "";
+    setEditedUserName("");
+    //document.getElementById().value = 0;
+    setEditedAge(0);
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
-    if (editedUserName === "") {
+    if (editedUserName.trim().length === 0) {
       console.log("invalid");
       document.getElementById("error-modal").style.display = "block";
       document.getElementById(
         "modal-text"
       ).innerText = `Please enter a valid name`;
+      clearFields();
       return;
     }
-    if (editedAge <= 0) {
+    if (+editedAge <= 0) {
       console.log("invalid");
       document.getElementById("error-modal").style.display = "block";
       document.getElementById(
         "modal-text"
       ).innerText = `Please enter a valid age`;
+      clearFields();
       return;
     }
     let newUser = {
@@ -37,6 +46,7 @@ const NewUser = (props) => {
       age: editedAge,
     };
     props.addNewUserHandler(newUser);
+    clearFields();
   };
 
   return (
