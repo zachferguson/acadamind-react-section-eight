@@ -12,6 +12,7 @@ const Modal = (props) => {
       className={`modal ${
         props.error.message.trim().length === 0 ? "hideModal" : "showModal"
       }`}
+      onClick={localUpdateModalHandler}
     >
       <div id="error-modal_card">
         <h2>An error has occurred.</h2>
