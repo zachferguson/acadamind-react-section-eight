@@ -9,17 +9,25 @@ function App() {
     { id: 2, userName: "Sub-Zero", age: 200 },
   ];
 
+  const [users, setUsers] = useState(initialUsers);
+  const [error, setError] = useState({ message: "" });
+
   const addNewUserHandler = (newUser) => {
     setUsers((initialUsers) => {
       return [newUser, ...initialUsers];
     });
   };
+  const updateModalHandler = (error) => {
+    setError(error);
+  };
 
-  const [users, setUsers] = useState(initialUsers);
   return (
     <div>
-      <Modal />
-      <NewUser addNewUserHandler={addNewUserHandler} />
+      <Modal error={error} setErrorModal={updateModalHandler} />
+      <NewUser
+        addNewUserHandler={addNewUserHandler}
+        setErrorModal={updateModalHandler}
+      />
       <UserList users={users} />
     </div>
   );

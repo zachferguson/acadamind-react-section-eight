@@ -1,16 +1,23 @@
+import Button from "./Button";
 import "./Modal.css";
 
 const Modal = (props) => {
-  let closeAction = (props) => {
-    document.getElementById("error-modal").style.display = "none";
+  let localUpdateModalHandler = () => {
+    props.setErrorModal({ message: "" });
   };
+
   return (
-    <div id="error-modal" className="modal">
+    <div
+      id="error-modal"
+      className={`modal ${
+        props.error.message.trim().length === 0 ? "hideModal" : "showModal"
+      }`}
+    >
       <div id="error-modal_card">
         <h2>An error has occurred.</h2>
         <hr />
-        <p id="modal-text"></p>
-        <button onClick={closeAction}>Close</button>
+        <p id="modal-text">{props.error.message}</p>
+        <Button onClick={localUpdateModalHandler}>Close</Button>
       </div>
     </div>
   );

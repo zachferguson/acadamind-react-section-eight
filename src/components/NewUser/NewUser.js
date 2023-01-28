@@ -14,9 +14,7 @@ const NewUser = (props) => {
   };
 
   let clearFields = () => {
-    //document.getElementById().value = "";
     setEditedUserName("");
-    //document.getElementById().value = 0;
     setEditedAge(0);
   };
 
@@ -24,19 +22,13 @@ const NewUser = (props) => {
     e.preventDefault();
     if (editedUserName.trim().length === 0) {
       console.log("invalid");
-      document.getElementById("error-modal").style.display = "block";
-      document.getElementById(
-        "modal-text"
-      ).innerText = `Please enter a valid name`;
+      props.setErrorModal({ message: "Please enter a valid name." });
       clearFields();
       return;
     }
     if (+editedAge <= 0) {
       console.log("invalid");
-      document.getElementById("error-modal").style.display = "block";
-      document.getElementById(
-        "modal-text"
-      ).innerText = `Please enter a valid age`;
+      props.setErrorModal({ message: "Please enter a valid age." });
       clearFields();
       return;
     }
